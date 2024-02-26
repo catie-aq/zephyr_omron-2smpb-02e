@@ -13,31 +13,31 @@
 
 LOG_MODULE_REGISTER(O2SMPB_02E, CONFIG_SENSOR_LOG_LEVEL);
 
-struct _2smpb_02e_config {
+struct o2smpb_02e_config {
 	struct i2c_dt_spec i2c;
 };
 
-struct _2smpb_02e_data {
+struct o2smpb_02e_data {
 };
 
-static int _2smpb_02e_attr_set(const struct device *dev, enum sensor_channel chan,
+static int o2smpb_02e_attr_set(const struct device *dev, enum sensor_channel chan,
 			       enum sensor_attribute attr, const struct sensor_value *val)
 {
 	return 0;
 }
 
-static int _2smpb_02e_sample_fetch(const struct device *dev, enum sensor_channel chan)
+static int o2smpb_02e_sample_fetch(const struct device *dev, enum sensor_channel chan)
 {
-	struct _2smpb_02e_data *data = dev->data;
-	const struct _2smpb_02e_config *config = dev->config;
+	struct o2smpb_02e_data *data = dev->data;
+	const struct o2smpb_02e_config *config = dev->config;
 
 	return 0;
 }
 
-static int _2smpb_02e_channel_get(const struct device *dev, enum sensor_channel chan,
+static int o2smpb_02e_channel_get(const struct device *dev, enum sensor_channel chan,
 				  struct sensor_value *val)
 {
-	struct _2smpb_02e_data *data = dev->data;
+	struct o2smpb_02e_data *data = dev->data;
 
 	// TODO: Update val with the sensor value
 	val->val1 = 0;
@@ -46,10 +46,10 @@ static int _2smpb_02e_channel_get(const struct device *dev, enum sensor_channel 
 	return 0;
 }
 
-static int _2smpb_02e_init(const struct device *dev)
+static int o2smpb_02e_init(const struct device *dev)
 {
-	const struct _2smpb_02e_config *config = dev->config;
-	struct _2smpb_02e_data *data = dev->data;
+	const struct o2smpb_02e_config *config = dev->config;
+	struct o2smpb_02e_data *data = dev->data;
 	uint8_t chip_id;
 
 	// Reset the sensor
@@ -68,19 +68,19 @@ static int _2smpb_02e_init(const struct device *dev)
 	return 0;
 }
 
-static const struct sensor_driver_api _2smpb_02e_driver_api = {
-	.attr_set = _2smpb_02e_attr_set,
-	.sample_fetch = _2smpb_02e_sample_fetch,
-	.channel_get = _2smpb_02e_channel_get,
+static const struct sensor_driver_api o2smpb_02e_driver_api = {
+	.attr_set = o2smpb_02e_attr_set,
+	.sample_fetch = o2smpb_02e_sample_fetch,
+	.channel_get = o2smpb_02e_channel_get,
 };
 
 #define O2SMPB_02E_INIT(n)                                                                         \
-	static struct _2smpb_02e_config _2smpb_02e_config_##n = {                                  \
+	static struct o2smpb_02e_config o2smpb_02e_config_##n = {                                  \
 		.i2c = I2C_DT_SPEC_INST_GET(n),                                                    \
 	};                                                                                         \
-	static struct _2smpb_02e_data _2smpb_02e_data_##n;                                         \
-	DEVICE_DT_INST_DEFINE(n, _2smpb_02e_init, NULL, &_2smpb_02e_data_##n,                      \
-			      &_2smpb_02e_config_##n, POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY,    \
-			      &_2smpb_02e_driver_api);
+	static struct o2smpb_02e_data o2smpb_02e_data_##n;                                         \
+	DEVICE_DT_INST_DEFINE(n, o2smpb_02e_init, NULL, &o2smpb_02e_data_##n,                      \
+			      &o2smpb_02e_config_##n, POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY,    \
+			      &o2smpb_02e_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(O2SMPB_02E_INIT)

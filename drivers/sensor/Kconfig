@@ -3,6 +3,6 @@
 
 if SENSOR
 
-rsource "2smpb_02e"
+rsource "smpb_02e/Kconfig"
 
 endif # SENSOR

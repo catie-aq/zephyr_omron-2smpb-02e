@@ -27,8 +27,8 @@ static int _2smpb_02e_attr_set(const struct device *dev, enum sensor_channel cha
 
 static int _2smpb_02e_sample_fetch(const struct device *dev, enum sensor_channel chan)
 {
-	struct _2smpb_02e_data *dev_data = dev->data;
-	const struct _2smpb_02e_cfg *dev_cfg = dev->config;
+	struct _2smpb_02e_data *data = dev->data;
+	const struct _2smpb_02e_config *config = dev->config;
 
 	return 0;
 }
@@ -36,7 +36,7 @@ static int _2smpb_02e_sample_fetch(const struct device *dev, enum sensor_channel
 static int _2smpb_02e_channel_get(const struct device *dev, enum sensor_channel chan,
 			      struct sensor_value *val)
 {
-	struct _2smpb_02e_data *dev_data = dev->data;
+	struct _2smpb_02e_data *data = dev->data;
 
     // TODO: Update val with the sensor value
 	val->val1 = 0;
@@ -47,8 +47,8 @@ static int _2smpb_02e_channel_get(const struct device *dev, enum sensor_channel 
 
 static int _2smpb_02e_init(const struct device *dev)
 {
-	const struct _2smpb_02e_cfg *cfg = dev->config;
-	struct _2smpb_02e_data *dev_data = dev->data;
+	const struct _2smpb_02e_config *config = dev->config;
+	struct _2smpb_02e_data *data = dev->data;
 
 	return 0;
 }

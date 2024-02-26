@@ -13,11 +13,38 @@
 
 LOG_MODULE_REGISTER(O2SMPB_02E, CONFIG_SENSOR_LOG_LEVEL);
 
+#define COEFFICIENT_A1_A  -6300000000000000.0
+#define COEFFICIENT_A1_S  430000000000000.0
+#define COEFFICIENT_A2_A  -19000000.0
+#define COEFFICIENT_A2_S  120000000.0
+#define COEFFICIENT_BT1_A 1e+17
+#define COEFFICIENT_BT1_S 9.1e+16
+#define COEFFICIENT_BT2_A 12000000000.0
+#define COEFFICIENT_BT2_S 1200000000000.0
+#define COEFFICIENT_BP1_A 3.3e+16
+#define COEFFICIENT_BP1_S 1.9e+16
+#define COEFFICIENT_B11_A 210000000000.0
+#define COEFFICIENT_B11_S 140000000000.0
+#define COEFFICIENT_BP2_A -630000000.0
+#define COEFFICIENT_BP2_S 350000000.0
+#define COEFFICIENT_B12_A 290000.0
+#define COEFFICIENT_B12_S 760000.0
+#define COEFFICIENT_B21_A 2100.0
+#define COEFFICIENT_B21_S 12000.0
+#define COEFFICIENT_BP3_A 130.0
+#define COEFFICIENT_BP3_S 79.0
+
 struct o2smpb_02e_config {
 	struct i2c_dt_spec i2c;
 };
 
 struct o2smpb_02e_data {
+	int32_t b00, a0;
+	int64_t bt1, bp1;
+	int64_t bt2;
+	int64_t b11, bp2;
+	int64_t b12, b21, bp3;
+	int64_t a1, a2;
 };
 
 static int o2smpb_02e_attr_set(const struct device *dev, enum sensor_channel chan,

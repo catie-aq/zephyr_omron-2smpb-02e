@@ -150,6 +150,10 @@ static int o2smpb_02e_init(const struct device *dev)
 		return -EIO;
 	}
 
+	if (o2smpb_02e_read_coefficients(dev) < 0) {
+		return -EIO;
+	}
+
 	return 0;
 }
 

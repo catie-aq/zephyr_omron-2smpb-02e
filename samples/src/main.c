@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/sensor.h>
+#include <zephyr/kernel.h>
 
 int main(void)
 {
@@ -19,9 +19,11 @@ int main(void)
 
 	while (1) {
 		sensor_sample_fetch(dev);
-        // Example for ambiant temperature sensor
 		sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &value);
-		printk("Value: %d.%06d\n", value.val1, value.val2);
+		printk("Temerature: %d.%06d\n", value.val1, value.val2);
+		sensor_channel_get(dev, SENSOR_CHAN_PRESS, &value);
+		printk("Pressure: %d.%06d\n", value.val1, value.val2);
+
 		k_sleep(K_MSEC(1000));
 	}
 }

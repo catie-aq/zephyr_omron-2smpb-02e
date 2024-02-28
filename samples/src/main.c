@@ -20,9 +20,9 @@ int main(void)
 	while (1) {
 		sensor_sample_fetch(dev);
 		sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &value);
-		printk("Temerature: %d.%06d\n", value.val1, value.val2);
+		printk("Temerature: %d.%06d°C\n", value.val1, value.val2);
 		sensor_channel_get(dev, SENSOR_CHAN_PRESS, &value);
-		printk("Pressure: %d.%06d\n", value.val1, value.val2);
+		printk("Pressure: %d.%dhPa\n", value.val1, value.val2);
 
 		k_sleep(K_MSEC(1000));
 	}

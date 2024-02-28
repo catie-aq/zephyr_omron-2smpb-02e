@@ -187,7 +187,6 @@ static int o2smpb_02e_channel_get(const struct device *dev, enum sensor_channel 
 static int o2smpb_02e_init(const struct device *dev)
 {
 	const struct o2smpb_02e_config *config = dev->config;
-	struct o2smpb_02e_data *data = dev->data;
 	uint8_t chip_id;
 
 	// Reset the sensor

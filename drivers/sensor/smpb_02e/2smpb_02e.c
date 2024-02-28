@@ -164,7 +164,6 @@ static int o2smpb_02e_channel_get(const struct device *dev, enum sensor_channel 
 		break;
 	case SENSOR_CHAN_PRESS:
 		double tr = (data->a0) + ((data->a1) + (data->a2) * data->dt) * data->dt;
-		tr /= 256.0;
 
 		double press = data->b00 + data->bt1 * tr + data->bp1 * (float)data->dp +
 			       data->b11 * data->dp * tr + data->bt2 * tr * tr +

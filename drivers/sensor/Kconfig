@@ -3,6 +3,6 @@
 
 if SENSOR
 
-rsource "smpb_02e/Kconfig"
+rsource "omron/Kconfig"
 
 endif # SENSOR

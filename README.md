@@ -3,14 +3,14 @@
 Omron 2SMPB 02E digital barometric pressure sensor Zephyr OS driver.
 
 ## Hardware requirements
-- Zest Sensor P-T-RH
-- Any Zest Core board
+- Zest_Sensor_P-T-RH
+- Any Zest_Core board
 
 ## Usage
 This sensor driver can be used to read the pressure and temperature from the Omron 2SMPB 02E sensor.
 
 ### Build
-Use the Zest Sensor P-T-RH shield:
+Use the Zest_Sensor_P-T-RH shield:
 ```bash
 west build -b <board> samples -- -DSHIELD=zest_sensor_p_t_rh
 ```

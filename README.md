@@ -2,6 +2,9 @@
 
 Omron 2SMPB 02E digital barometric pressure sensor Zephyr OS driver.
 
+> [!NOTE]
+> This driver is now supported in the Zephyr OS mainline and is no longer maintained in this repository.
+
 ## Hardware requirements
 - Zest_Sensor_P-T-RH
 - Any Zest_Core board
